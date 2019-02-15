@@ -32,13 +32,13 @@
 					</content>
 
 					<section class="weather__forecast">
-						<div class="row no-gutters justify-content-center" v-if="forecast.daily">
-							<div class="col-12 col-lg-2 weather__day" v-for="day in forecast.daily" :disabled="loading">
+						<ul v-if="forecast.daily">
+							<li class="weather__day" v-for="day in forecast.daily" :disabled="loading">
 								<h4>{{ day.timestamp | moment('dddd') }}</h4>
 
 								<Forecast :data="day" :size="'small'" />
-							</div>
-						</div>
+							</li>
+						</ul>
 					</section>
 				</div>
 				<!-- /weather widget -->
@@ -226,7 +226,17 @@ export default {
 			margin: 0 -20px -20px;
 			border-bottom-left-radius: 10px;
 			border-bottom-right-radius: 10px;
-			background-color: #f0f2f9;
+			// background-color: #f0f2f9;
+
+			ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+
+				li {
+					display: inline-block;
+				}
+			}
 
 			h4 {
 				margin: 0 0 20px 0;
@@ -238,9 +248,10 @@ export default {
 		}
 
 		&__day {
-			padding: 20px 0 20px;
-			// border-top: 1px solid #efefef;
-			// border-right: 1px solid #efefef;
+			width: 20%;
+			padding: 20px 0;
+			border-top: 1px solid #efefef;
+			border-right: 1px solid #efefef;
 
 			&:last-child {
 				border-right: none;
@@ -268,5 +279,14 @@ export default {
 	[disabled] {
 		opacity: 0.5 !important;
 		transition: opacity 0.2s ease-in-out;
+	}
+
+	@media only screen and (max-width: 590px) {
+		.weather {
+			&__day {
+				width: 100%;
+				border-right: none;
+			}
+		}
 	}
 </style>
