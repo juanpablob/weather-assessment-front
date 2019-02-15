@@ -6,16 +6,16 @@
 				<div class="weather">
 					<header class="weather__header">
 						<div class="row justify-content-between align-items-center">
-							<div class="col-3"></div>
+							<div class="col-2"></div>
 
-							<div class="col-6">
+							<div class="col-8">
 								<form v-on:submit.prevent="changeLocation">
 									<input type="search" class="form-control" v-model="location" :disabled="loading" placeholder="Enter City or Post Code">
 									<i :disabled="loading" class="icon icon-search"></i>
 								</form>
 							</div>
 
-							<div class="col-3 text-right">
+							<div class="col-2 text-right">
 								<button type="button" title="Refresh" @click="getForecast"><i class="icon icon-refresh"></i></button>
 							</div>
 						</div>
@@ -32,8 +32,8 @@
 					</content>
 
 					<section class="weather__forecast">
-						<div class="row no-gutters" v-if="forecast.daily">
-							<div class="col-12 col-lg-3 weather__day" v-for="day in forecast.daily" :disabled="loading">
+						<div class="row no-gutters justify-content-center" v-if="forecast.daily">
+							<div class="col-12 col-lg-2 weather__day" v-for="day in forecast.daily" :disabled="loading">
 								<h4>{{ day.timestamp | moment('dddd') }}</h4>
 
 								<Forecast :data="day" :size="'small'" />
@@ -172,6 +172,7 @@ export default {
 
 	.container {
 		height: 100vh;
+		padding-top: 30px;
 	}
 
 	.weather {
@@ -223,6 +224,9 @@ export default {
 		// Forecast
 		&__forecast {
 			margin: 0 -20px -20px;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+			background-color: #f0f2f9;
 
 			h4 {
 				margin: 0 0 20px 0;
@@ -235,8 +239,8 @@ export default {
 
 		&__day {
 			padding: 20px 0 20px;
-			border-top: 1px solid #efefef;
-			border-right: 1px solid #efefef;
+			// border-top: 1px solid #efefef;
+			// border-right: 1px solid #efefef;
 
 			&:last-child {
 				border-right: none;

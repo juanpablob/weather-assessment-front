@@ -58,17 +58,17 @@ export default {
 		&--small &__icon {
 			display: inline-block;
 			margin-right: 5px;
-			font-size: 50px;
+			font-size: 40px;
 		}
 
 		&--small &__temperature {
 			margin-left: 5px;
-			font-size: 25px;
+			font-size: 18px;
 		}
 
 		&--small &__description {
 			margin-left: 5px;
-			font-size: 18px;
+			font-size: 14px;
 		}
 	}
 </style>
